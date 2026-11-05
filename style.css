@@ -1,0 +1,924 @@
+/* =========================================================
+   LIVIA | CABELEIREIRA E MAQUIADORA
+   ========================================================= */
+
+:root {
+    --dourado: #c49a69;
+    --dourado-claro: #e0b98b;
+    --dourado-escuro: #9b7955;
+    --escuro: #171310;
+    --creme: #f4eae3;
+    --bege: #ecd7be;
+    --linha: #d4c1b1;
+    --branco: #ffffff;
+    --paleta1: #E2CEC3;
+    --paleta2: #A97668;
+
+    --fonte-titulo: "Playfair Display", Georgia, "Times New Roman", serif;
+    --fonte-texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+    --largura-max: 1200px;
+    --altura-menu: 80px;
+}
+
+/* ---------- BASE ---------- */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    color: var(--paleta2);
+    background: var(--paleta1);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+section[id] {
+    scroll-margin-top: 70px;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--largura-max);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+:focus-visible {
+    outline: 2px solid var(--dourado);
+    outline-offset: 3px;
+}
+
+/* ---------- BOTÕES ---------- */
+
+.botao-menu,
+.botao-dourado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paleta2);
+    color: var(--escuro);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 999px;
+    padding: 14px 28px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+
+.botao-menu:hover,
+.botao-dourado:hover {
+    background: var(--dourado-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(196, 154, 105, 0.35);
+}
+
+.botao-escuro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--escuro);
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 999px;
+    padding: 14px 28px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.botao-escuro:hover {
+    background: var(--dourado-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(196, 154, 105, 0.35);
+}
+
+
+/* ---------- MENU ---------- */
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: background 0.3s, box-shadow 0.3s;
+    color: var(--branco);
+}
+
+.menu.rolado,
+.menu.aberto {
+    background: rgba(23, 19, 16, 0.96);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .menu.rolado {
+        background: rgba(23, 19, 16, 0.85);
+        backdrop-filter: blur(10px);
+    }
+}
+
+.menu-interno {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: var(--altura-menu);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.logo,
+.logo-rodape {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo > span,
+.logo-rodape > span {
+    font-family: var(--fonte-titulo);
+    font-size: 40px;
+    line-height: 1;
+    color: var(--dourado);
+}
+
+.logo h2 {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.logo p {
+    font-size: 8px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+.menu nav {
+    display: flex;
+    gap: 32px;
+}
+
+.menu nav a {
+    position: relative;
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 0;
+    transition: color 0.3s;
+}
+
+.menu nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--dourado);
+    transition: width 0.3s;
+}
+
+.menu nav a:hover {
+    color: var(--dourado);
+}
+
+.menu nav a:hover::after {
+    width: 100%;
+}
+
+/* botão hambúrguer (só aparece no celular/tablet) */
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.menu-toggle span {
+    position: absolute;
+    left: 10px;
+    width: 24px;
+    height: 2px;
+    background: var(--branco);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s, top 0.3s;
+}
+
+.menu-toggle span:nth-child(1) { top: 14px; }
+.menu-toggle span:nth-child(2) { top: 21px; }
+.menu-toggle span:nth-child(3) { top: 28px; }
+
+.menu.aberto .menu-toggle span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.menu.aberto .menu-toggle span:nth-child(2) { opacity: 0; }
+.menu.aberto .menu-toggle span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* ---------- INÍCIO ---------- */
+
+.inicio {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+.container-inicio {
+    position: relative;
+    width: 100%;
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+    background-image: url("imagens/imagem-principal.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: var(--branco);
+    padding-top: var(--altura-menu);
+}
+
+/* camada escura para o texto ficar sempre legível */
+.container-inicio::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(23, 19, 16, 0.75) 0%, rgba(23, 19, 16, 0.35) 55%, rgba(23, 19, 16, 0.05) 100%);
+    pointer-events: none;
+}
+
+.conteudo-inicio {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 40px 6%;
+}
+
+.texto-inicio {
+    max-width: 580px;
+}
+
+.texto-inicio h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 400;
+    line-height: 1.1;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+}
+
+.texto-inicio h1 span,
+.contato h2 span {
+    color: var(--dourado);
+    font-style: italic;
+}
+
+.texto-inicio p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 22px 0 30px;
+    max-width: 460px;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- HISTÓRIA ---------- */
+
+.historia {
+    background: var(--bege);
+    padding: 90px 5%;
+}
+
+.titulo-historia,
+.texto-historia {
+    max-width: var(--largura-max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulo-historia {
+    margin-bottom: 48px;
+}
+
+.titulo-historia h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--escuro);
+}
+
+.titulo-historia h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--dourado);
+    margin-top: 18px;
+}
+
+.texto-historia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+}
+
+.texto-biografia {
+    flex: 1 1 58%;
+    color: var(--escuro);
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.texto-biografia p {
+    margin-bottom: 18px;
+}
+
+.texto-biografia p:first-child {
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--dourado-escuro);
+}
+
+.texto-biografia h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--dourado);
+}
+
+.foto-livia {
+    flex: 0 1 40%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px rgba(23, 19, 16, 0.2);
+}
+
+.foto-livia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ---------- SERVIÇOS ---------- */
+
+
+
+.servicos {
+    background: var(--creme);
+    padding: 80px 6%;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.titulo-servicos {
+    flex: 0 0 260px;
+}
+
+.titulo-servicos span,
+.titulo-portfolio span {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--dourado-escuro);
+    font-weight: 500;
+}
+
+.titulo-servicos h2,
+.titulo-portfolio h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(30px, 3.5vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.titulo-servicos p {
+    margin: 10px 0 22px;
+    line-height: 1.5;
+    color: #4a4039;
+}
+
+.titulo-servicos a {
+    display: inline-block;
+    background: var(--escuro);
+    color: var(--branco);
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-size: 13px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.titulo-servicos a:hover {
+    background: var(--dourado);
+    color: var(--escuro);
+}
+
+.lista-servicos {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.servico {
+    flex: 1;
+    text-align: center;
+    border-left: 1px solid var(--linha);
+    padding: 14px 10px;
+    transition: transform 0.3s;
+}
+
+.servico:hover {
+    transform: translateY(-4px);
+}
+
+.servico span {
+    display: block;
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: var(--dourado-escuro);
+}
+
+.servico p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ---------- PORTFÓLIO ---------- */
+
+.portfolio {
+    background: var(--creme);
+    padding: 20px 0 90px;
+}
+
+.titulo-portfolio,
+.fotos-portfolio {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.titulo-portfolio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.titulo-portfolio a {
+    text-decoration: none;
+    color: var(--escuro);
+    border: 1px solid var(--escuro);
+    border-radius: 999px;
+    padding: 11px 22px;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: background 0.3s, color 0.3s;
+}
+
+.titulo-portfolio a:hover {
+    background: var(--escuro);
+    color: var(--branco);
+}
+
+.fotos-portfolio {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+}
+
+.fotos-portfolio img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.fotos-portfolio img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(23, 19, 16, 0.25);
+}
+
+/* ---------- CONTATO ---------- */
+
+.contato {
+    background: var(--paleta2);
+    color: var(--branco);
+    padding: 64px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.contato h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.informacoes {
+    font-size: 15px;
+    line-height: 2.1;
+    color: #e5d7ca;
+}
+
+/* ---------- RODAPÉ ---------- */
+
+footer {
+    background: var(--paleta2);
+    color: var(--branco);
+    border-top: 1px solid var(--escuro);
+    padding: 26px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.logo-rodape h3 {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.logo-rodape small {
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+footer p {
+    color: #e5d7ca;
+    font-size: 13px;
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: var(--branco);
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.instagram-link:hover {
+    color: var(--dourado);
+    transform: scale(1.1);
+}
+
+
+
+/* ---------- BOTÃO FLUTUANTE DO WHATSAPP ---------- */
+
+.whatsapp-flutuante {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 90;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25d366;
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.whatsapp-flutuante:hover {
+    transform: scale(1.08);
+}
+
+/* ---------- ANIMAÇÃO DE ENTRADA ---------- */
+
+.js .aparecer {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.js .aparecer.visivel {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+    .js .aparecer { opacity: 1; transform: none; }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .botao-menu {
+        display: none;
+    }
+
+    /* menu vira gaveta abaixo da barra */
+    .menu nav {
+        position: absolute;
+        top: var(--altura-menu);
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(23, 19, 16, 0.98);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    .menu.aberto nav {
+        max-height: 420px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu nav a {
+        font-size: 16px;
+        padding: 18px 6%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .menu nav a::after {
+        display: none;
+    }
+
+    .menu-interno {
+        padding: 0 5%;
+    }
+
+    /* história */
+    .texto-historia {
+        gap: 36px;
+    }
+
+    .texto-biografia {
+        font-size: 16px;
+    }
+
+    /* serviços */
+    .servicos {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 36px;
+        padding: 64px 6%;
+    }
+
+    .titulo-servicos {
+        flex: none;
+    }
+
+    .lista-servicos {
+        width: 100%;
+    }
+
+    /* portfólio */
+    .fotos-portfolio {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    :root {
+        --altura-menu: 68px;
+    }
+
+    .logo > span {
+        font-size: 34px;
+    }
+
+    .logo h2 {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+
+    .logo p {
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    /* início */
+    .container-inicio {
+        background-position: 68% center;
+        align-items: flex-end;
+    }
+
+    .container-inicio::before {
+        background: linear-gradient(180deg, rgba(23, 19, 16, 0.35) 0%, rgba(23, 19, 16, 0.2) 35%, rgba(23, 19, 16, 0.85) 100%);
+    }
+
+    .conteudo-inicio {
+        padding: 40px 24px 56px;
+    }
+
+    .texto-inicio h1 {
+        font-size: clamp(34px, 10vw, 42px);
+    }
+
+    .texto-inicio p {
+        font-size: 15px;
+        margin: 16px 0 26px;
+    }
+
+    .texto-inicio .botao-dourado {
+        width: 100%;
+        padding: 16px 24px;
+    }
+
+    /* história: foto logo abaixo do título, depois o texto */
+    .historia {
+        padding: 56px 24px;
+    }
+
+    .titulo-historia {
+        margin-bottom: 28px;
+    }
+
+    .texto-historia {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+    }
+
+    .foto-livia {
+        order: -1;
+        flex: none;
+        width: 100%;
+        aspect-ratio: 4 / 4.6;
+        border-radius: 22px;
+    }
+
+    .texto-biografia {
+        flex: none;
+        width: 100%;
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .texto-biografia p:first-child {
+        font-size: 19px;
+    }
+
+    /* serviços */
+    .servicos {
+        padding: 56px 24px;
+        gap: 28px;
+    }
+
+    .lista-servicos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .servico {
+        border: 1px solid var(--linha);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.45);
+        padding: 22px 10px;
+    }
+
+    .servico:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .servico span {
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+
+    /* portfólio */
+    .portfolio {
+        padding: 8px 0 60px;
+    }
+
+    .titulo-portfolio,
+    .fotos-portfolio {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .titulo-portfolio {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    .fotos-portfolio {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .fotos-portfolio img:last-child {
+        grid-column: 1 / -1;
+        aspect-ratio: 16 / 11;
+    }
+
+    /* contato */
+    .contato {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 56px 24px;
+    }
+
+    .contato .botao-dourado {
+        width: 100%;
+        padding: 16px 24px;
+    }
+
+    .informacoes {
+        font-size: 14px;
+    }
+
+    /* rodapé */
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 32px 24px 96px; /* espaço para o botão flutuante */
+    }
+}
+
+/* =========================================================
+   CELULAR PEQUENO
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .logo h2 {
+        font-size: 11px;
+    }
+
+    .texto-inicio h1 {
+        font-size: 31px;
+    }
+
+    .lista-servicos {
+        gap: 10px;
+    }
+
+    .servico p {
+        font-size: 13px;
+    }
+}
