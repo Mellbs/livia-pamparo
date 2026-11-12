@@ -59,44 +59,61 @@ atualizarMenu();
 window.addEventListener("scroll", atualizarMenu, { passive: true });
 
 
+
 // ---------- FORMULÁRIO DE AGENDAMENTO WHATSAPP ----------
 
 const formulario = document.getElementById("form-agendamento");
 
 if (formulario) {
+
     formulario.addEventListener("submit", function(event) {
+
         event.preventDefault();
 
+        // Captura os dados
         const nome = document.getElementById("nome").value.trim();
         const data = document.getElementById("data").value;
+
+        // Captura todos os serviços selecionados
         const servicos = Array.from(
             document.querySelectorAll('input[name="servicos"]:checked')
         ).map(input => input.value);
 
-        // Verifica se pelo menos um serviço foi selecionado
-        if (servicos.length === 0) {
-            alert("Por favor, selecione pelo menos um serviço.");
+        // Verifica os campos
+        if (!nome || !data) {
+            alert("Preencha todos os campos.");
             return;
         }
 
-        // Formata a data para o padrão brasileiro
-        const dataFormatada = data.split("-").reverse().join("/");
+        if (servicos.length === 0) {
+            alert("Selecione pelo menos um serviço.");
+            return;
+        }
 
-        // Monta a mensagem
+        // Formata a data
+        const [ano, mes, dia] = data.split("-");
+        const dataFormatada = `${dia}/${mes}/${ano}`;
+
+        // Cria a mensagem
         const mensagem =
             `Olá, Livia! Gostaria de agendar um horário.\n\n` +
             `*Nome:* ${nome}\n` +
             `*Data desejada:* ${dataFormatada}\n` +
-            `*Serviço:* ${servico}\n\n` +
+            `*Serviços desejados:* ${servicos.join(", ")}\n\n` +
             `Aguardo seu retorno!`;
 
-        // Abre o WhatsApp com a mensagem preenchida
+        // Número do WhatsApp
         const telefone = "5519993423938";
+
+        // Abre o WhatsApp
         const link = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
-        window.open(link, "_blank");
+        window.location.href = link;
+
     });
+
 }
+
 
 
 
