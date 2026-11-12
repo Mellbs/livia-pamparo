@@ -1082,9 +1082,23 @@ footer p {
         gap: 10px;
     }
 
+    .fotos-portfolio {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+    .fotos-portfolio img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    /* Remove o tamanho especial da última foto */
     .fotos-portfolio img:last-child {
-        grid-column: 1 / -1;
-        aspect-ratio: 16 / 11;
+        grid-column: auto;
+        aspect-ratio: 3 / 4;
     }
 
     /* contato */
