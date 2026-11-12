@@ -69,7 +69,15 @@ if (formulario) {
 
         const nome = document.getElementById("nome").value.trim();
         const data = document.getElementById("data").value;
-        const servico = document.getElementById("servico").value;
+        const servicos = Array.from(
+            document.querySelectorAll('input[name="servicos"]:checked')
+        ).map(input => input.value);
+
+        // Verifica se pelo menos um serviço foi selecionado
+        if (servicos.length === 0) {
+            alert("Por favor, selecione pelo menos um serviço.");
+            return;
+        }
 
         // Formata a data para o padrão brasileiro
         const dataFormatada = data.split("-").reverse().join("/");

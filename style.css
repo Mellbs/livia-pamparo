@@ -721,6 +721,52 @@ footer p {
 }
 
 
+/* ---------- OPÇÕES DE SERVIÇOS ---------- */
+
+.opcoes-servico {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.opcao-servico {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+    background: var(--branco);
+    border: 1px solid var(--linha);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border 0.3s, background 0.3s;
+}
+
+.opcao-servico:hover {
+    border-color: var(--dourado);
+    background: #fcf7f1;
+}
+
+.opcao-servico input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    accent-color: var(--dourado-escuro);
+    cursor: pointer;
+}
+
+.opcao-servico span {
+    color: var(--escuro);
+    font-size: 14px;
+}
+
+.opcao-servico:has(input:checked) {
+    border-color: var(--dourado-escuro);
+    background: #f5e8d9;
+}
+
+
+
 /* CORREÇÃO DO CAMPO DE DATA NO CELULAR */
 
 #form-agendamento {

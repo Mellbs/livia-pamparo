@@ -230,6 +230,7 @@
             <img src="imagens/imagem5.jpeg" alt="Penteados 5" loading="lazy">
             <img src="imagens/imagem6.jpeg" alt="Penteados 6" loading="lazy">
             <img src="imagens/imagem7.jpeg" alt="Penteados 7" loading="lazy">
+            <img src="imagens/imagem8.jpeg" alt="Penteados 8" loading="lazy">
         </div>
 
     </section>
@@ -273,18 +274,55 @@
                 >
             </div>
 
+            
             <div class="campo-agendamento">
-                <label for="servico">Qual serviço deseja?</label>
-                <select id="servico" name="servico" required>
-                    <option value="">Selecione um serviço</option>
-                    <option value="Corte feminino ou masculino">Cortes femininos</option>
-                    <option value="Coloração e mechas">Coloração e mechas</option>
-                    <option value="Tratamentos capilares">Tratamentos capilares</option>
-                    <option value="Maquiagem profissional">Maquiagem profissional</option>
-                    <option value="Finalizações e penteados">Finalizações e penteados</option>
-                    <option value="Outro serviço">Outro serviço</option>
-                </select>
+                <label>Quais serviços deseja?</label>
+
+                <div class="opcoes-servico">
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Cortes femininos e masculinos">
+                        <span>Cortes femininos</span>
+                    </label>
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Coloração e mechas">
+                        <span>Coloração</span>
+                    </label>
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Coloração e mechas">
+                        <span>Mechas</span>
+                    </label>
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Tratamentos capilares">
+                        <span>Tratamentos capilares</span>
+                    </label>
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Maquiagem profissional">
+                        <span>Maquiagem profissional</span>
+                    </label>
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Finalizações e penteados">
+                        <span>Finalizações e penteados</span>
+                    </label>
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Escova">
+                        <span>Escova</span>
+                    </label>
+
+                    <label class="opcao-servico">
+                        <input type="checkbox" name="servicos" value="Escova">
+                        <span>Dia de Noiva</span>
+                    </label>
+
+                </div>
             </div>
+
 
             <button type="submit" class="botao-agendamento">
                 Agendar pelo WhatsApp
