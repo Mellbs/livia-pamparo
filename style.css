@@ -611,6 +611,131 @@ footer p {
 }
 
 
+/* ---------- FORMULÁRIO DE AGENDAMENTO ---------- */
+
+.agendamento {
+    background: var(--bege);
+    padding: 90px 24px;
+}
+
+.conteudo-agendamento {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.titulo-agendamento {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.titulo-agendamento span {
+    color: var(--dourado-escuro);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+
+.titulo-agendamento h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--escuro);
+    margin: 12px 0;
+}
+
+.titulo-agendamento h2 em {
+    color: var(--dourado-escuro);
+}
+
+.titulo-agendamento p {
+    color: #5b4b41;
+    font-size: 15px;
+}
+
+#form-agendamento {
+    background: var(--creme);
+    padding: 38px;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(23, 19, 16, 0.08);
+}
+
+.campo-agendamento {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+
+.campo-agendamento label {
+    color: var(--escuro);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.campo-agendamento input,
+.campo-agendamento select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--linha);
+    border-radius: 10px;
+    background: var(--branco);
+    color: var(--escuro);
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.campo-agendamento input:focus,
+.campo-agendamento select:focus {
+    border-color: var(--dourado);
+    box-shadow: 0 0 0 3px rgba(196, 154, 105, 0.15);
+}
+
+.botao-agendamento {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 999px;
+    background: var(--escuro);
+    color: var(--branco);
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.botao-agendamento i {
+    font-size: 19px;
+}
+
+.botao-agendamento:hover {
+    background: var(--dourado-escuro);
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+
+@media (max-width: 700px) {
+
+    .agendamento {
+        padding: 65px 24px;
+    }
+
+    #form-agendamento {
+        padding: 26px 20px;
+    }
+
+}
+
+
+
 
 /* ---------- BOTÃO FLUTUANTE DO WHATSAPP ---------- */
 

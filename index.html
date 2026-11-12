@@ -119,8 +119,8 @@
 
                 <p>
                     Com dedicação, estudo e aperfeiçoamento constante, fui
-                    desenvolvendo minhas habilidades como cabeleireiro e
-                    maquiador, buscando sempre acompanhar tendências, conhecer
+                    desenvolvendo minhas habilidades como cabeleireira e
+                    maquiadora, buscando sempre acompanhar tendências, conhecer
                     novas técnicas e oferecer experiências cada vez mais especiais.
                 </p>
 
@@ -169,7 +169,7 @@
                 <span aria-hidden="true">
                     <i class="fa-solid fa-scissors"></i>
                 </span>
-                <p>Cortes femininos<br>e masculinos</p>
+                <p>Cortes femininos</p>
             </div>
 
             <!-- Coloração e mechas -->
@@ -250,6 +250,70 @@
 
     </section>
 
+
+
+<!-- AGENDAMENTO -->
+<section class="agendamento" id="agendamento">
+
+    <div class="conteudo-agendamento">
+
+        <div class="titulo-agendamento">
+            <span>VAMOS AGENDAR?</span>
+            <h2>Seu momento de <em>beleza</em> começa aqui.</h2>
+            <p>
+                Preencha os dados abaixo e envie sua solicitação
+                diretamente pelo WhatsApp.
+            </p>
+        </div>
+
+        <form id="form-agendamento">
+
+            <div class="campo-agendamento">
+                <label for="nome">Nome</label>
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+            </div>
+
+            <div class="campo-agendamento">
+                <label for="data">Data que gostaria de marcar</label>
+                <input
+                    type="date"
+                    id="data"
+                    name="data"
+                    required
+                >
+            </div>
+
+            <div class="campo-agendamento">
+                <label for="servico">Qual serviço deseja?</label>
+                <select id="servico" name="servico" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="Corte feminino ou masculino">Cortes femininos</option>
+                    <option value="Coloração e mechas">Coloração e mechas</option>
+                    <option value="Tratamentos capilares">Tratamentos capilares</option>
+                    <option value="Maquiagem profissional">Maquiagem profissional</option>
+                    <option value="Finalizações e penteados">Finalizações e penteados</option>
+                    <option value="Outro serviço">Outro serviço</option>
+                </select>
+            </div>
+
+            <button type="submit" class="botao-agendamento">
+                Agendar pelo WhatsApp
+                <i class="fa-brands fa-whatsapp"></i>
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
     </main>
 
 
@@ -257,7 +321,7 @@
     <footer>
 
         <div class="logo-rodape">
-            <span>RT</span>
+            <span>LP</span>
             <div>
                 <h3>LÍVIA PAMPARO</h3>
                 <small>CABELEIREIRA E MAQUIADORA</small>
