@@ -720,6 +720,40 @@ footer p {
     transform: translateY(-2px);
 }
 
+
+/* CORREÇÃO DO CAMPO DE DATA NO CELULAR */
+
+#form-agendamento {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.campo-agendamento {
+    width: 100%;
+    min-width: 0;
+}
+
+.campo-agendamento input,
+.campo-agendamento select {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Ajuste específico para a data no Safari/iPhone */
+#data {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
 /* Responsividade */
 
 @media (max-width: 700px) {

@@ -59,6 +59,39 @@ atualizarMenu();
 window.addEventListener("scroll", atualizarMenu, { passive: true });
 
 
+// ---------- FORMULÁRIO DE AGENDAMENTO WHATSAPP ----------
+
+const formulario = document.getElementById("form-agendamento");
+
+if (formulario) {
+    formulario.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value.trim();
+        const data = document.getElementById("data").value;
+        const servico = document.getElementById("servico").value;
+
+        // Formata a data para o padrão brasileiro
+        const dataFormatada = data.split("-").reverse().join("/");
+
+        // Monta a mensagem
+        const mensagem =
+            `Olá, Livia! Gostaria de agendar um horário.\n\n` +
+            `*Nome:* ${nome}\n` +
+            `*Data desejada:* ${dataFormatada}\n` +
+            `*Serviço:* ${servico}\n\n` +
+            `Aguardo seu retorno!`;
+
+        // Abre o WhatsApp com a mensagem preenchida
+        const telefone = "5519993423938";
+        const link = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+        window.open(link, "_blank");
+    });
+}
+
+
+
 // =========================================================
 // ANIMAÇÃO DE ENTRADA AO ROLAR
 // =========================================================
